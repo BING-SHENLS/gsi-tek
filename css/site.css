@@ -615,7 +615,7 @@ html{scroll-padding-top:80px}
 .split-col{display:flex;flex-direction:column;min-width:0;padding-top:var(--d)}
 .split-col.c1{grid-column:1;grid-row:2}.split-col.c2{grid-column:2;grid-row:2}.split-col.c3{grid-column:3;grid-row:2}.split-col.c4{grid-column:4;grid-row:1/3}.split-col.c5{grid-column:5;grid-row:1/3}
 .split-slat{position:relative;flex:1 1 auto;min-height:130px;overflow:hidden;background:#dfe7d8;transition:clip-path 1.4s var(--ease)}
-.split-slat img{position:absolute;max-width:none;width:var(--iw,100cqw);height:auto;left:var(--ix,0);top:var(--iy,0);filter:saturate(.85)}
+.split-slat img{position:absolute;max-width:none;width:var(--iw,100cqw);height:auto;aspect-ratio:3/2;left:var(--ix,0);top:var(--iy,0);filter:saturate(.85)}
 .motion-ready .about-split:not(.visible) .split-slat{clip-path:inset(100% 0 0 0)}
 .about-split .c4 .split-slat{transition-delay:0s}.about-split .c5 .split-slat{transition-delay:.1s}.about-split .c3 .split-slat{transition-delay:.2s}.about-split .c2 .split-slat{transition-delay:.3s}.about-split .c1 .split-slat{transition-delay:.4s}
 .split-intro,.split-note{transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -631,6 +631,104 @@ html{scroll-padding-top:80px}
 @media(max-width:1100px){.split-intro h2{font-size:clamp(34px,4.4vw,48px)}.split-note h3{font-size:18px}.split-note p{font-size:13px;line-height:1.8}.split-v{font-size:11px}}
 @media(max-width:800px){.about-split{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto;height:auto;--gap:12px}.split-slat{flex:none}.split-intro{grid-column:1/-1;padding-right:0}.split-col.is-tall{display:none}.split-col.c1{grid-column:1}.split-col.c3{grid-column:2}.split-col.c5{grid-column:3;grid-row:2}.split-slat{height:calc(var(--h,40cqw) * 0 + 46cqw)}.split-col.c3 .split-slat{height:40cqw}.split-note h3{font-size:17px}}
 @media(max-width:560px){.about-split{row-gap:0}.split-intro{margin-bottom:36px}.split-col{display:contents}.split-slat,.split-col.c3 .split-slat{grid-row:2;height:74cqw;margin-top:var(--d)}.split-col.c3 .split-slat{height:66cqw}.split-note{grid-column:1/-1;padding:22px 0 0}}
+
+
+/* RWD pass: readable minimum type and 44px tap targets on touch sizes; tablet label floor. */
+@media(max-width:900px){
+ .hero .eyebrow,.hero-copy>.eyebrow{font-size:10px}
+ .scene-hint{font-size:10px}.scene-toggle{font-size:11px}
+ .esg-topic-copy>span{font-size:9px;letter-spacing:.12em}
+ .service-en{font-size:10px}.step-outcome{font-size:11px}
+ .news-category,.news-year>span{font-size:11px}
+ .contact-orb .orb-caption{font-size:10px}
+}
+@media(max-width:600px){
+ .brand>span{font-size:10px}
+ .eyebrow,.section-index{font-size:11px}
+ .service-no{font-size:11px}.service-tags li{font-size:12px}
+ .esg-topic-copy>span{font-size:8.5px;letter-spacing:.08em}
+ .esg-topic-copy strong{font-size:14px}
+ .contact-orb>span{font-size:11px}.contact-orb .orb-caption{font-size:9px}
+ .footer-bottom span{font-size:11px}
+ .scene-toggle{min-height:44px;padding:0 16px}
+ .news-filters button{min-height:44px}
+ .contact-email{min-height:44px;display:inline-flex;align-items:center}
+ .site-footer a,.footer-main a{display:inline-flex;align-items:center;min-height:44px}
+ .motion-toggle{min-height:44px;padding-inline:10px}
+ .split-note p{font-size:14px}
+ .news-list{grid-template-columns:minmax(0,1fr)}.news-featured{grid-column:auto;grid-row:auto}.news-item h3{overflow-wrap:anywhere}
+ .contact-orb .orb-caption,.back-top span{font-size:10px}
+}
+@media(max-width:420px){.esg-topic-copy>span{display:none}.esg-topic-copy strong{font-size:13px}}
+
+/* Mobile composition pass (verified at 390 / 768). */
+.scene-toggle{white-space:nowrap}
+.news-filters button{white-space:nowrap}
+@media(max-width:900px){.services-heading{top:auto}
+ .section-top .eyebrow{white-space:nowrap}
+ .news-featured{padding-bottom:26px}.news-featured>*:not(.news-art){margin-inline:24px}.news-featured .news-art{margin-bottom:20px}
+ .hero-bottom.esg-navigation,.scene-ready .hero-bottom.esg-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+ .esg-topic{min-width:0}}
+@media(max-width:600px){
+ .hero-bottom.esg-navigation,.scene-ready .hero-bottom.esg-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:auto;padding:0}
+ .esg-topic{min-width:0;display:grid;grid-template-columns:auto;justify-items:start;align-content:center;gap:4px;padding:14px 16px;border-left:1px solid #2f7d3f14}
+ .esg-topic:first-child{border-left:0}
+ .esg-letter{font-size:30px;line-height:1}
+ .esg-topic-copy strong{font-size:13px;white-space:nowrap}
+ .esg-topic-no{display:none}
+ .scene-toggle{min-height:40px;padding:0 14px}
+ .services,.scene-ready .services{padding-top:0}
+ .services-heading{top:auto}
+ .services-heading{margin-bottom:28px}
+ .news-filters{flex-wrap:wrap;gap:8px}
+ .news-filters button{padding:0 18px}
+ .news-featured{padding-bottom:26px}
+ .news-featured>*:not(.news-art){margin-inline:24px}
+ .news-featured .news-art{margin-bottom:20px}
+ .site-footer a,.footer-main a{min-height:36px}
+ .footer-main{row-gap:28px}
+ .footer-main>*{min-width:0}
+ .back-top{grid-column:1/-1;justify-self:end;flex-direction:row;writing-mode:horizontal-tb;gap:10px;margin-top:-4px}
+ .back-top span{writing-mode:horizontal-tb}
+ .footer-bottom{align-items:center;gap:16px}
+ .footer-bottom>span:first-child{flex:1;min-width:0}
+}
+
+/* Contact photo breaks its frame: the slanted slice keeps cutting down through the footer to the page bottom. */
+@media(min-width:901px){
+ .contact,.scene-ready .contact{z-index:1;overflow:visible}
+ .contact-slice{bottom:auto;left:41%;width:auto;right:0;height:var(--burst-h,100%);clip-path:polygon(56% 0,100% 0,100% 100%,0 100%)}
+ .contact-slice img{object-position:50% 34%}
+ .contact-slice::after{content:none}
+ .site-footer{position:relative;z-index:2;background:transparent}
+ .footer-main a,.footer-bottom,.back-top{color:#1f3526}
+}
+
+/* Contact orb as a glass lens on the photo: frosted, ringed, fills green on hover. On paper (narrow screens) it becomes an outlined ring. */
+.contact-main .contact-orb{position:relative;isolation:isolate;overflow:visible;color:var(--deep);background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(14px) saturate(1.25) brightness(1.08);backdrop-filter:blur(14px) saturate(1.25) brightness(1.08);border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 24px 60px rgba(28,60,38,.18)}
+.contact-main .contact-orb::before{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(255,255,255,.55);pointer-events:none;transition:inset .6s var(--ease),opacity .6s}
+.contact-main .contact-orb::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:50%;background:var(--green);transform:scale(0);transition:transform .6s var(--ease)}
+.contact-main .contact-orb>span,.contact-main .contact-orb .orb-caption{color:var(--deep);transition:color .4s}
+.contact-main .contact-orb .orb-caption{color:#3d5a45}
+.contact-main .contact-orb:hover::after,.contact-main .contact-orb:focus-visible::after{transform:scale(1)}
+.contact-main .contact-orb:hover::before{inset:-20px;opacity:.35}
+.contact-main .contact-orb:hover>span,.contact-main .contact-orb:hover .orb-caption,.contact-main .contact-orb:focus-visible>span,.contact-main .contact-orb:focus-visible .orb-caption{color:#fff}
+@media(max-width:900px){
+ .contact-main .contact-orb{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border:1px solid var(--green);box-shadow:none}
+ .contact-main .contact-orb::before{inset:-8px;border-color:#2f7d3f40}
+ .contact-main .contact-orb>span,.contact-main .contact-orb .orb-caption{color:var(--green)}
+}
+@media(hover:none){.contact-main .contact-orb:active::after{transform:scale(1)}.contact-main .contact-orb:active>span,.contact-main .contact-orb:active .orb-caption{color:#fff}}
+
+/* Footer text that lands on the photo switches to white ink (set per element by JS), so the photo needs no white fog. */
+@media(min-width:901px){
+ .site-footer .on-photo,.site-footer .on-photo a,.site-footer .on-photo span,.site-footer .on-photo button{color:#fff!important;text-shadow:0 1px 2px rgba(8,26,12,.8),0 0 10px rgba(8,26,12,.65),0 0 22px rgba(8,26,12,.5)}
+ .site-footer .on-photo:not(.footer-wordmark>i){position:relative;isolation:isolate}
+ .site-footer .on-photo:not(.footer-wordmark>i)::before{content:"";position:absolute;inset:-14px -22px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(8,26,12,.5),rgba(8,26,12,.28) 60%,rgba(8,26,12,0))}
+ .site-footer .on-photo .footer-label,.site-footer .on-photo h3,.site-footer .on-photo p{color:#eef4ea!important}
+ .footer-wordmark>i.on-photo{color:#f1e9fb!important}
+ .site-footer .edge-photo{background:rgba(255,255,255,.92);box-shadow:0 0 0 5px rgba(255,255,255,.92),0 3px 16px 5px rgba(10,30,15,.16);border-radius:2px}
+}
 
 /* Progressive images: blurred 24px preview, sharp file fades in. */
 img.lq:not(.is-loaded){filter:blur(16px)!important;opacity:.92}
