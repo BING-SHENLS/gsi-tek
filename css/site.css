@@ -600,3 +600,7 @@ html{scroll-padding-top:80px}
 @media(max-width:900px){.site-header.scrolled{height:60px;margin-bottom:-60px}.site-header.scrolled .brand img{width:120px}}
 @media(max-width:600px){.site-header.scrolled{height:58px;margin-bottom:-58px}.site-header.scrolled .brand img{width:112px}}
 
+
+/* Progressive images: blurred 24px preview, sharp file fades in. */
+img.lq:not(.is-loaded){filter:blur(16px)!important;opacity:.92}
+img.lq{transition:filter .8s ease,opacity .8s ease}
