@@ -601,6 +601,36 @@ html{scroll-padding-top:80px}
 @media(max-width:600px){.site-header.scrolled{height:58px;margin-bottom:-58px}.site-header.scrolled .brand img{width:112px}}
 
 
+
+
+/* About: one photograph cut into five strips that wrap the headline (L-shape) and interlock with the principles. JS maps every strip onto the same image. */
+.about.section-pad{padding-top:clamp(40px,5.5vh,84px)}
+.about .section-top{margin-bottom:clamp(20px,3vh,40px)}
+.about-split{--gap:14px;container-type:inline-size;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:auto minmax(0,1fr);gap:clamp(28px,4vh,56px) var(--gap);height:clamp(600px,calc(100svh - 64px - clamp(40px,5.5vh,84px) - clamp(20px,3vh,40px) - 44px),1000px);margin-top:4px}
+.split-intro{grid-column:1/4;grid-row:1;align-self:start;padding-right:6%}
+.split-intro h2{margin:0;font-size:clamp(38px,min(3.4vw,5.6vh),60px);line-height:1.28}
+.split-intro .about-description{margin-top:clamp(16px,2.4vh,30px);max-width:40em}
+.split-intro .about-description p{font-size:clamp(14px,1.6vh,16px);line-height:1.9;margin:0 0 .5em}
+.split-intro .about-description .text-link{margin-top:clamp(10px,1.6vh,20px)}
+.split-col{display:flex;flex-direction:column;min-width:0;padding-top:var(--d)}
+.split-col.c1{grid-column:1;grid-row:2}.split-col.c2{grid-column:2;grid-row:2}.split-col.c3{grid-column:3;grid-row:2}.split-col.c4{grid-column:4;grid-row:1/3}.split-col.c5{grid-column:5;grid-row:1/3}
+.split-slat{position:relative;flex:1 1 auto;min-height:130px;overflow:hidden;background:#dfe7d8;transition:clip-path 1.4s var(--ease)}
+.split-slat img{position:absolute;max-width:none;width:var(--iw,100cqw);height:auto;left:var(--ix,0);top:var(--iy,0);filter:saturate(.85)}
+.motion-ready .about-split:not(.visible) .split-slat{clip-path:inset(100% 0 0 0)}
+.about-split .c4 .split-slat{transition-delay:0s}.about-split .c5 .split-slat{transition-delay:.1s}.about-split .c3 .split-slat{transition-delay:.2s}.about-split .c2 .split-slat{transition-delay:.3s}.about-split .c1 .split-slat{transition-delay:.4s}
+.split-intro,.split-note{transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.split-note{flex:none;padding:clamp(14px,2vh,22px) 6px 0 0;transition-delay:.8s}
+.motion-ready .about-split:not(.visible) .split-note,.motion-ready .about-split:not(.visible) .split-intro{opacity:0;transform:translateY(14px)}
+.split-no{display:flex;align-items:center;gap:12px;margin-bottom:clamp(8px,1.4vh,14px);font-family:Arial,sans-serif;font-size:11px;letter-spacing:.16em;color:var(--purple)}
+.split-no::after{content:"";flex:1;height:1px;background:#2f7d3f33}
+.split-note h3{margin:0 0 8px;font-size:clamp(17px,min(1.45vw,2.3vh),23px);font-weight:500;letter-spacing:-.01em;color:var(--deep)}
+.split-note p{margin:0;font-size:clamp(13px,1.5vh,14px);line-height:1.8;color:#5d6a61;text-wrap:pretty}
+.split-v{position:absolute;left:16px;bottom:20px;z-index:1;writing-mode:vertical-rl;font-size:12px;letter-spacing:.32em;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.split-v-en{left:auto;right:14px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:.26em}
+.motion-off .split-slat,.motion-off .split-note,.motion-off .split-intro{clip-path:none!important;opacity:1!important;transform:none!important}
+@media(max-width:1100px){.split-intro h2{font-size:clamp(34px,4.4vw,48px)}.split-note h3{font-size:18px}.split-note p{font-size:13px;line-height:1.8}.split-v{font-size:11px}}
+@media(max-width:800px){.about-split{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto;height:auto;--gap:12px}.split-slat{flex:none}.split-intro{grid-column:1/-1;padding-right:0}.split-col.is-tall{display:none}.split-col.c1{grid-column:1}.split-col.c3{grid-column:2}.split-col.c5{grid-column:3;grid-row:2}.split-slat{height:calc(var(--h,40cqw) * 0 + 46cqw)}.split-col.c3 .split-slat{height:40cqw}.split-note h3{font-size:17px}}
+@media(max-width:560px){.about-split{row-gap:0}.split-intro{margin-bottom:36px}.split-col{display:contents}.split-slat,.split-col.c3 .split-slat{grid-row:2;height:74cqw;margin-top:var(--d)}.split-col.c3 .split-slat{height:66cqw}.split-note{grid-column:1/-1;padding:22px 0 0}}
+
 /* Progressive images: blurred 24px preview, sharp file fades in. */
 img.lq:not(.is-loaded){filter:blur(16px)!important;opacity:.92}
-img.lq{transition:filter .8s ease,opacity .8s ease}

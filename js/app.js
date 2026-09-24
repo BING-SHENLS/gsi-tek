@@ -87,9 +87,16 @@
   function setService(service, open) {
     if (open && expertiseVisual) {
       const index = [...document.querySelectorAll('.service')].indexOf(service);
-      expertiseVisual.dataset.service = String(index);
-      expertiseVisual.querySelector('.expertise-current').textContent = expertiseLabels[index];
-      expertiseVisual.querySelector('.expertise-caption-en').textContent = expertiseLines[index];
+      if (expertiseVisual.dataset.service !== String(index)) {
+        expertiseVisual.dataset.service = String(index);
+        expertiseVisual.classList.add('is-switching');
+        clearTimeout(expertiseVisual._swap);
+        expertiseVisual._swap = setTimeout(() => {
+          expertiseVisual.querySelector('.expertise-current').textContent = expertiseLabels[index];
+          expertiseVisual.querySelector('.expertise-caption-en').textContent = expertiseLines[index];
+          expertiseVisual.classList.remove('is-switching');
+        }, 380);
+      }
     }
     const startHeight = service.getBoundingClientRect().height;
     const previous = sizeAnimations.get(service);
@@ -257,3 +264,9 @@
   document.querySelector('#year').textContent = new Date().getFullYear();
 })();
 (function(){var a=document.getElementById('approach');if(!a)return;function f(){a.style.setProperty('--approach-angle',Math.atan2(a.offsetHeight,a.offsetWidth)*180/Math.PI+'deg')}f();window.addEventListener('resize',f);if('ResizeObserver'in window)new ResizeObserver(f).observe(a)})();
+(function(){var f=document.querySelector('.about-split');if(!f)return;
+function sync(){var fr=f.getBoundingClientRect();var sl=[].filter.call(f.querySelectorAll('.split-slat'),function(s){return s.offsetWidth>0});if(!sl.length)return;
+var rs=sl.map(function(s){return s.getBoundingClientRect()});var top=Math.min.apply(null,rs.map(function(r){return r.top})),bot=Math.max.apply(null,rs.map(function(r){return r.bottom}));
+var W=fr.width,H=bot-top,iw=Math.max(W,H*1.06*1.5),ih=iw/1.5,ox=(iw-W)/2,oy=(ih-H)*.35;
+f.style.setProperty('--iw',iw+'px');sl.forEach(function(s,i){s.style.setProperty('--ix',(-(rs[i].left-fr.left)-ox)+'px');s.style.setProperty('--iy',(-(rs[i].top-top)-oy)+'px')})}
+sync();window.addEventListener('load',sync);if(document.fonts)document.fonts.ready.then(sync);if('ResizeObserver'in window)new ResizeObserver(sync).observe(f);else window.addEventListener('resize',sync)})();
